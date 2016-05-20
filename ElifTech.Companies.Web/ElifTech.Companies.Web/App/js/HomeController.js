@@ -23,8 +23,7 @@
    
 //}]);
 eliftech.controller('HomeController', function ($scope, $http) {
-    $scope.company = {
-    name:'sfasf'};
+    $scope.company = {};
 
         $scope.update = function (user) {
 
