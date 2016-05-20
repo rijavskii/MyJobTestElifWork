@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CompaniesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="parent_id" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="earnings" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Companies1" Relationship="Self.FK__Companies__paren__108B795B" FromRole="Companies" ToRole="Companies1" />
+    <NavigationProperty Name="Company1" Relationship="Self.FK__Companies__paren__108B795B" FromRole="Companies1" ToRole="Companies" />
+  </EntityType>
+  <Association Name="FK__Companies__paren__108B795B">
+    <End Role="Companies" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="Companies1" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Companies1">
+        <PropertyRef Name="parent_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CompaniesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <AssociationSet Name="FK__Companies__paren__108B795B" Association="Self.FK__Companies__paren__108B795B">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Companies1" EntitySet="Companies" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,60 @@
+﻿<div ng-controller="HomeController">
+    <div>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Add company</button>
+        </div>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog col-md-offset-6 ">
+                <div class="modal-content col-md-8">
+                    <h3 class="text-center">Add company</h3>
+                    <div class="form-group " >
+                        <label class="control-label" >Company name</label>
+                        <input type="text" ng-model="company.name" class="form-control" aria-describedby="inputSuccess2Status" >
+                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label">Company earnings</label>
+                        <input type="text"  class="form-control" aria-describedby="inputSuccess2Status">
+                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Parent company (ID)</label>
+                        <input type="text" ng-model="company.parent_id"class="form-control" aria-describedby="inputSuccess2Status">
+                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button ng-click="AddToDbFunc"type="button" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br />
+    <div class="table-responsive col-sm-12">
+        <table class="table">
+            <thead>
+                <tr class="active ">
+                    <td class="col-md-3">ID</td>
+                    <td class="col-md-3">Company Name</td>
+                    <td class="col-md-3">Earnings</td>
+                    <td class="col-md-3">Parent ID</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="warning">
+                <tr ng-repeat="x in companies ">
+                    
+                    <td class="col-md-3">{{x.Id}}</td>
+                    <td class="col-md-3">{{x.Name}}</td>
+                    <td class="col-md-3">{{x.ParentId}}</td>
+                    <td class="col-md-3">{{x.Earnings}}</td>
+                    
+                </tr>
+                    
+                
+            </tbody>
+        </table>
+    </div>
+</div>

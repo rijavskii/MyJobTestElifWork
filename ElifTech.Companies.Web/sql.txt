@@ -1,0 +1,15 @@
+CREATE DATABASE Companies;
+
+CREATE TABLE Companies(
+	id INT PRIMARY KEY AUTO INCREMENT,
+	parent_id INT NULL FOREIGN KEY References Companies(id), 
+	name NVARCHAR(50) NOT NULL,
+	earnings MONEY
+);
+
+SELECT 
+	name,
+	earnings
+FROM
+	
+	Companies
